@@ -1,5 +1,5 @@
 from __future__ import absolute_import, division, print_function
-from idascylla import SCYLLA_DIR
+from idascylla import SCYLLA_DIR, PLUGIN_DIR
 
 import idaapi
 
@@ -12,6 +12,7 @@ Inlcudes Scylla v0.9.8 (https://github.com/NtQuery/Scylla/releases)
 inside plugin/idascylla/Scylla
 
 """
+
 
 class IdaScyllaPlugin(idaapi.plugin_t):
     """Entry point"""
@@ -31,12 +32,13 @@ class IdaScyllaPlugin(idaapi.plugin_t):
         self.start_scylla()
 
     def start_scylla(self):
-        # If 64-bit address size (sizeof(ea_t)==8) 
-        if __import__('idc').__EA64__: 
-            idaapi.IDAPython_ExecSystem(SCYLLA_DIR + '\\Scylla_x64.exe')
-        else:
-            idaapi.IDAPython_ExecSystem(SCYLLA_DIR + '\\Scylla_x86.exe')
-    
+        if __import__('idc').__EA64__: # 64-bit
+            path = '"{}"'.format(SCYLLA_DIR + '\\Scylla_x64.exe')
+        else: # assumes 32-bit
+            path = '"{}"'.format(SCYLLA_DIR + '\\Scylla_x64.exe')
+        
+        idaapi.IDAPython_ExecSystem(path)
+
     def init(self):
         return idaapi.PLUGIN_KEEP
 
