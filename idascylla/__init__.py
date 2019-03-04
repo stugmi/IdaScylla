@@ -3,4 +3,5 @@ from idaapi import idadir
 
 import os
 
-SCYLLA_DIR = "plugins\\idascylla\\Scylla"
+PLUGIN_DIR = os.path.dirname(os.path.realpath(__file__))
+SCYLLA_DIR = PLUGIN_DIR + "\\Scylla_v0.9.8"
