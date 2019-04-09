@@ -1,5 +1,5 @@
 # IdaScylla
-To make using Scylla with IDA 7.0 easier
+To make using Scylla with IDA 7.0 easier (Mostly just trying to make a plugin for IDA as practice)
 
 Use either the Scylla directory inside [idascylla/Scylla](https://github.com/stugmi/IdaScylla/tree/master/idascylla/Scylla) or download/use your own from their [github](https://github.com/NtQuery/Scylla/releases)
 
